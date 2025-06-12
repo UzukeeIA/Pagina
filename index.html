@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo Diana 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(135deg, #ffe0f7 0%, #b3e0ff 100%);
+            overflow-x: hidden;
+        }
+        .pochacco-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+            opacity: 0.18;
+            background: url('https://static.wikia.nocookie.net/sanrio/images/7/7e/Pochacco_2022.png') center/contain no-repeat;
+            animation: float 6s ease-in-out infinite alternate;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px);}
+            100% { transform: translateY(30px);}
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff69b4;
+            text-shadow: 2px 2px 8px #fff, 0 0 10px #ffb3d9;
+            margin-bottom: 0.2em;
+        }
+        .heart {
+            font-size: 2.5em;
+            color: #ff69b4;
+            animation: beat 1s infinite alternate;
+        }
+        @keyframes beat {
+            to { transform: scale(1.2);}
+        }
+        .btn-love {
+            margin-top: 2em;
+            padding: 1em 2em;
+            font-size: 1.2em;
+            background: linear-gradient(90deg, #ffb3d9, #b3e0ff);
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            font-family: 'Pacifico', cursive;
+            box-shadow: 0 4px 16px #ffb3d9a0;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-love:active {
+            transform: scale(0.95);
+        }
+        .message {
+            margin-top: 2em;
+            font-size: 1.5em;
+            color: #ff69b4;
+            background: #fff8;
+            padding: 1em 2em;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px #ffb3d9a0;
+            display: none;
+        }
+        .pochacco-img {
+            margin-top: 1em;
+            width: 120px;
+            height: 120px;
+            animation: bounce 1.5s infinite alternate;
+            filter: drop-shadow(0 0 10px #fff6);
+        }
+        @keyframes bounce {
+            to { transform: translateY(-15px);}
+        }
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            width: 24px; height: 24px;
+            background: url('https://cdn-icons-png.flaticon.com/512/616/616490.png') center/contain no-repeat;
+            opacity: 0.7;
+            animation: sparkle 1s linear forwards;
+        }
+        @keyframes sparkle {
+            to { opacity: 0; transform: scale(1.8);}
+        }
+    </style>
+</head>
+<body>
+    <div class="pochacco-bg"></div>
+    <div class="container">
+        <h1>Te Amo Diana</h1>
+        <div class="heart">💖</div>
+        <button class="btn-love" onclick="showMessage()">Tócame 💌</button>
+        <div class="message" id="loveMsg">
+            ¡Eres lo mejor que me ha pasado! <br>
+            <img class="pochacco-img" src="https://cdn.sanriowiki.com/thumb/3/38/Pochacco.png/200px-Pochacco.png" alt="Pochacco">
+        </div>
+    </div>
+    <script>
+        // Mostrar mensaje interactivo
+        function showMessage() {
+            const msg = document.getElementById('loveMsg');
+            msg.style.display = 'block';
+            createSparkles();
+        }
+
+        // Efecto de chispas al tocar el botón
+        function createSparkles() {
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = (window.innerWidth/2 + (Math.random()-0.5)*180) + 'px';
+                    sparkle.style.top = (window.innerHeight/2 + (Math.random()-0.5)*120) + 'px';
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i*60);
+            }
+        }
+    </script>
+</body>
+</html>
